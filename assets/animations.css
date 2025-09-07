@@ -1,0 +1,73 @@
+/* animations.css — Smooth, battery-friendly animations for desktop & mobile */
+/* 1) Global motion safety: reduce animations if user prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* 2) Reusable keyframes: only transform/opacity for 60fps */
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translate3d(0, 12px, 0) }
+  to   { opacity: 1; transform: translate3d(0, 0, 0) }
+}
+
+@keyframes fade-in {
+  from { opacity: 0 }
+  to   { opacity: 1 }
+}
+
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.96) }
+  to   { opacity: 1; transform: scale(1) }
+}
+
+@keyframes slide-in-right {
+  from { opacity: 0; transform: translate3d(16px, 0, 0) }
+  to   { opacity: 1; transform: translate3d(0, 0, 0) }
+}
+
+/* 3) Utility classes with sensible defaults */
+.motion-fade        { animation: fade-in  .6s cubic-bezier(.22,.61,.36,1) both }
+.motion-fade-up     { animation: fade-in-up .7s cubic-bezier(.22,.61,.36,1) both }
+.motion-scale       { animation: scale-in .5s cubic-bezier(.22,.61,.36,1) both }
+.motion-slide-right { animation: slide-in-right .6s cubic-bezier(.22,.61,.36,1) both }
+
+/* 4) Opt-in scroll reveal */
+.reveal { opacity: 0; transform: translate3d(0, 8px, 0) }
+.reveal.is-visible { opacity: 1; transform: none }
+.reveal-up.is-visible    { animation: fade-in-up .7s cubic-bezier(.22,.61,.36,1) both }
+.reveal-fade.is-visible  { animation: fade-in   .6s cubic-bezier(.22,.61,.36,1) both }
+.reveal-scale.is-visible { animation: scale-in  .55s cubic-bezier(.22,.61,.36,1) both }
+
+/* 5) Make hover effects feel good on touch + mouse */
+@media (hover: hover) and (pointer: fine) {
+  .hover-raise {
+    transition: transform .2s ease, box-shadow .2s ease;
+    will-change: transform;
+  }
+  .hover-raise:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,.08);
+  }
+}
+
+@media (max-width: 640px) {
+  /* Slightly shorter on small screens */
+  .motion-fade,
+  .motion-fade-up,
+  .motion-scale,
+  .motion-slide-right,
+  .reveal-up.is-visible,
+  .reveal-fade.is-visible,
+  .reveal-scale.is-visible {
+    animation-duration: .45s;
+  }
+}
+/* 6) Simple stagger helper */
+.stagger > * {
+  animation-delay: calc(var(--i, 0) * 80ms);
+}

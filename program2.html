@@ -1,0 +1,332 @@
+<!doctype html><html lang="vi"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Basic Programming Lessons in Scratch & Blockly (2024) — ComChess For Future</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="style.css">
+
+  <link rel="stylesheet" href="assets/animations.css">
+<style>
+  :root{
+    --card-w: 220px;
+    --card-h: 300px;
+    --stack-offset: 8px;
+    --duration: 400ms;
+  }
+
+  .wrap{
+    margin: 100px auto;
+    width: calc(var(--card-w) + 120px);
+    height: calc(var(--card-h) + 80px);
+    position:relative;
+    user-select:none;
+  }
+
+  .stack{
+    width:var(--card-w);
+    height:var(--card-h);
+    position:relative;
+    margin: auto;
+    cursor:pointer;
+    perspective:1200px;
+  }
+
+  .card1{
+    position:absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    border-radius:14px;
+    box-shadow: 0 8px 20px rgba(20,30,50,0.12);
+    overflow:hidden;
+    background-size:cover;
+    background-position:center;
+    transition: transform var(--duration) cubic-bezier(.2,.9,.25,1),
+                box-shadow var(--duration);
+    will-change: transform;
+  }
+  .card1 {
+    transform: translateY(calc(var(--stack-offset) * var(--i))) scale(calc(1 - var(--i) * 0.02));
+  }
+
+  .card1:nth-child(1){ --i: 0; }
+  .card1:nth-child(2){ --i: 1; }
+  .card1:nth-child(3){ --i: 2; }
+
+  .stack.expanded .card1{
+    transition: transform var(--duration) cubic-bezier(.2,.9,.25,1), box-shadow var(--duration);
+  }
+
+  .stack:not(.expanded) .card1:hover{
+    transform: translateY(-6px) scale(1.02);
+    box-shadow:0 18px 40px rgba(20,30,50,0.18);
+    z-index:999;
+  }
+
+  @media (max-width:768px){
+    :root{ --card-w: 160px; --card-h: 220px; }
+    .wrap{ width: calc(var(--card-w) + 40px); margin-left: 115px; }
+  }
+</style>
+</head><body>
+
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light glass">
+      <div class="container">
+        <!-- Brand -->
+        <a class="navbar-brand brand" href="index.html">ComChess For Future</a>
+  
+        <!-- Hamburger -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+          aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+  
+        <!-- Menu -->
+        <div class="collapse navbar-collapse" id="mainNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="aboutus.html">About Us</a></li>
+            <li class="nav-item"><a class="nav-link" href="our-milestones.html">Our Milestones</a></li>
+  
+            <!-- Dropdown -->
+            <li class="nav-item dropdown active">
+              <a class="nav-link dropdown-toggle active" href="#" id="programDropdown" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                Our Program
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="programDropdown">
+                <li><a class="dropdown-item" href="program1.html">Beginner Computer Literacy Curriculum (2023)</a></li>
+                <li><a class="dropdown-item active" href="program2.html">Basic Programming Lessons in Scratch & Blockly (2024)</a></li>
+                <li><a class="dropdown-item" href="program3.html">Chess Teaching Curriculum</a></li>
+              </ul>
+            </li>
+  
+            <li class="nav-item"><a class="nav-link" href="get-involved.html">Get Involved</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+<main>
+<section class="section" style="padding:20px 0; margin-bottom: 0px;"><div class="container">
+  <div style="padding:4px; margin-bottom: 0px;">
+    <h1 class="h1" style="text-align: center; font-size: 40px;">Basic Programming Lessons in Scratch & Blockly (2024)</h1>
+    <p style="margin-top: 50px;margin-bottom: -55px;"><span style="border: 2px solid black; border-radius: 50%; padding: 8px 14px; display: inline-block;color: white;background-color: #000033;"><b style="color: white;">1</b></span><span style="margin-left: 10px; font-size: 20px;"> <b><u>Scratch – Visual Programming for Beginners</u></b></span></p>
+  </div></section>
+  <div class="three-sections-bg" style="background-size: cover;background-position: center;background-repeat: no-repeat;padding: 20px;">
+    <section class="section" style="padding: 20px 0;">
+      <div class="container">
+        <div class="glass" style="background:#000033; padding:25px; border-radius:0;">
+          <div class="row align-items-center g-4">
+            
+            <!-- Cột nội dung -->
+            <div class="col-12 col-lg-7">
+              <ul class="list text-white mb-0" style="margin-left:-20px;">
+                <li>Introduction to Scratch: What is coding? What is Scratch?</li>
+                <li>Getting Started: Sprites, stage, and blocks</li>
+                <li>Basic Concepts:
+                  <ul style="list-style-type:none; margin-left:-40px;">
+                    <li>Motion blocks (move, turn)</li>
+                    <li>Looks blocks (say, change costume)</li>
+                    <li>Events (when green flag clicked)</li>
+                    <li>Control (repeat, forever, if-then)</li>
+                  </ul>
+                </li>
+                <li>Mini Projects:
+                  <ul style="list-style-type:none; margin-left:-40px;">
+                    <li>Create an animated story</li>
+                    <li>Build a simple maze game</li>
+                  </ul>
+                </li>
+                <li>Goal: Help children understand programming logic through fun and visuals</li>
+              </ul>
+            </div>
+
+            <!-- Cột ảnh -->
+            <div class="col-12 col-lg-5 text-center mb-margin-left">
+              <img
+                src="p9.png"
+                alt="Học Scratch cùng ComChess"
+                class="img-fluid rounded-3 shadow-sm"
+                style="aspect-ratio: 7 / 5;"
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+    <section class="section" style="padding:20px 0; margin-bottom: 0px;"><div class="container">
+    <div style="padding:4px; margin-bottom: 0px;">  
+      <p style="margin-top: 1 0px;margin-bottom: -55px;"><span style="border: 2px solid black; border-radius: 50%; padding: 8px 14px; display: inline-block;color: white;background-color: #000033;"><b style="color: white;">2</b></span><span style="margin-left: 10px; font-size: 20px;"> <b><u>Blockly – First Steps in Visual Coding</u></b></span></p>
+    </div></section>
+    <div class="three-sections-bg" style="background-size: cover;background-position: center;background-repeat: no-repeat;padding: 20px;margin-top: -10px;">
+      <section class="section" style="padding: 20px 0;">
+        <div class="container">
+          <div class="glass" style="background:#000033; padding:25px; border-radius:0;">
+            <div class="row align-items-center g-4">
+              <!-- Cột ảnh -->
+              <div class="col-12 col-lg-5 text-center mb-margin-right">
+                <img
+                  src="p10.png"
+                  alt="Học Scratch cùng ComChess"
+                  class="img-fluid rounded-3 shadow-sm"
+                  style="aspect-ratio: 7 / 5;"
+                >
+              </div>
+              <!-- Cột nội dung -->
+              <div class="col-12 col-lg-7">
+                <ul class="list text-white mb-0" style="margin-left:-20px;">
+                  <li>Introduction to Blockly: What is Blockly? Why block-based coding makes it easier for beginners.</li>
+                  <li>Basic Blocks:
+                    <ul style="list-style-type:none; margin-left:-40px;">
+                      <li>Motion and action blocks (move forward, turn, repeat)</li>
+                      <li>Variables and simple math operations (add, subtract, multiply, divide)</li>
+                      <li>Input and output using text or number blocks</li>
+                    </ul>
+                  </li>
+                  <li>Logic & Control:
+                    <ul style="list-style-type:none; margin-left:-40px;">
+                      <li>If–then blocks (decision making)</li>
+                      <li>Loops (repeat, repeat until, while)</li>
+                    </ul>
+                  </li>
+                  <li>Mini Projects:
+                    <ul style="list-style-type:none; margin-left:-40px;">
+                      <li>Build a simple animation (moving a character)</li>
+                      <li>Create a math quiz game using blocks</li>
+                    </ul>
+                  </li>
+                  <li>Goal: Develop problem-solving and logical thinking in a fun, visual way before moving on to text-based coding.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+    </section>
+</div>
+
+<div class="wrap">
+  <div class="stack" id="stack">
+    <div class="card1" style="background-image:url('p11.png')"></div>
+    <div class="card1" style="background-image:url('p12.png')"></div>
+    <div class="card1" style="background-image:url('p13.png')"></div>
+  </div>
+</div>
+  <section class="section">
+    <div class="container">
+      <div class="glass" style="padding:24px">
+          <div class="card glass" style="background-color: #000033;">
+            <h3 style="text-align: center;"><b style="color: white;"><i>Integrated Learning Approach</i></b></h3>
+            <ul class="list">
+              <li style="color: white;">Encourage creativity by letting students design their own projects in Scratch and Blockly (e.g., interactive stories, small games, quizzes).</li>
+              <li style="color: white;">Show students how the logic and structures they learn in Blockly can also be applied in Scratch, helping them strengthen problem-solving skills across both platforms.</li>
+              <li style="color: white;">Combine coding challenges with chess-inspired puzzles to enhance logical reasoning, concentration, and creativity.</li>
+            </ul>
+          </div>
+      </div>
+    </div>
+  </section>  
+  <section class="section">
+    <div class="container">
+      <div class="glass" style="padding:24px">
+          <div class="card glass" style="background-color: #000033;">
+            <h3 style="text-align: center;"><b style="color: white;"><i>Here is some example projects we use to inspire students in our program:</i></b></h3>
+            <a class="btn btn-primary" href="https://scratch.mit.edu/projects/1045513139/fullscreen/">Flappy Bird</a>
+            <a class="btn btn-primary" href="https://scratch.mit.edu/projects/1045230698/editor/">Stickman Run - 10K</a>
+          </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="container"><div class="glass" style="padding:16px; border-radius:14px;">© 2025 ComChess For Future</div></footer>
+<script src="script.js"></script>
+<script>
+(function(){
+  const stack = document.getElementById('stack');
+  const cards = Array.from(stack.querySelectorAll('.card1'));
+  let expanded = false;
+
+  // tham số
+  const MAX_ANGLE = 0;
+  // auto chọn offset theo thiết bị
+  const MAX_OFFSET_X = (window.innerWidth <= 768) ? 150 : 400; 
+  const GAP_Y = 8;
+
+  function applyFan(){
+    const n = cards.length;
+    const center = (n - 1) / 2;
+    cards.forEach((card, idx) => {
+      const rel = idx - center;
+      const angle = (rel) * (MAX_ANGLE / Math.max(1, center));
+      const offsetX = (rel) * (MAX_OFFSET_X / Math.max(1, center));
+      const offsetY = Math.abs(rel) * GAP_Y;
+      const z = Math.round(100 - Math.abs(rel));
+      const translate3d = `translate3d(${offsetX}px, -${offsetY}px, ${50 - Math.abs(rel)*10}px)`;
+      const rotate = `rotate(${angle}deg)`;
+
+      card.style.transform = `${translate3d} ${rotate} scale(1)`;
+      card.style.zIndex = z;
+      card.style.boxShadow = "0 18px 40px rgba(18,30,60,0.18)";
+    });
+  }
+
+  function applyStack(){
+    cards.forEach((card, idx) => {
+      card.style.transform = `translateY(calc(var(--stack-offset) * ${idx})) scale(${1 - idx*0.02})`;
+      card.style.zIndex = 10 + idx;
+      card.style.boxShadow = "0 8px 20px rgba(20,30,50,0.12)";
+    });
+  }
+
+  function toggle(){
+    expanded = !expanded;
+    if(expanded){
+      stack.classList.add('expanded');
+      applyFan();
+    }else{
+      stack.classList.remove('expanded');
+      applyStack();
+    }
+  }
+
+  stack.addEventListener('click', toggle);
+  stack.addEventListener('touchstart', function(e){
+    e.preventDefault();
+    toggle();
+  }, {passive:false});
+
+  applyStack();
+
+  cards.forEach((c, i)=>{
+    c.addEventListener('click', (e)=>{
+      if(expanded){
+        e.stopPropagation();
+        cards.forEach((cc, j)=>{
+          if(j === i){
+            cc.style.transform += " scale(1.06)";
+            cc.style.boxShadow = "0 30px 60px rgba(10,20,40,0.25)";
+          } else {
+            cc.style.opacity = "0.65";
+          }
+        });
+        setTimeout(()=> {
+          applyFan();
+          cards.forEach(cc=> cc.style.opacity = "");
+        }, 700);
+      }
+    });
+  });
+
+  window.addEventListener('resize', ()=>{
+    if(expanded) applyFan(); else applyStack();
+  });
+})();
+</script>
+  <script defer src="assets/reveal.js"></script>
+</body></html>
